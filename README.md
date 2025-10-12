@@ -43,8 +43,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/kartikeyakrishna/portfolio.git
-   cd portfolio
+   git clone https://github.com/DEEPAK-317/Deepak_Portfolio.git
+   cd Deepak_Portfolio
    ```
 
 2. **Install dependencies**
@@ -200,9 +200,9 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Contact
 
-- **Email:** kartikeya.chintala@gmail.com
-- **LinkedIn:** [kartikeya-krishna](https://linkedin.com/in/kartikeya-krishna-6986b3231)
-- **GitHub:** [kartikeyakrishna](https://github.com/kartikeyakrishna)
+- **Email:** Email: deepaknittrichy@gmail.com
+- **LinkedIn:** [Deepak Kumar](https://www.linkedin.com/in/deepak-kumar-62a4b8270/)
+- **GitHub:** [Deepak Kumar](https://github.com/DEEPAK-317)
 
 ---
 
