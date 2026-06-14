@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -15,9 +16,11 @@ html {
 
 body {
   font-family: 'Inter', sans-serif;
-  line-height: 1.6;
+  background-color: #050816;
+  color: #FFFFFF;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar */
@@ -26,47 +29,70 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-900;
+  background: #050816;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full;
-  background: #ccc;
-}
-
-@media (prefers-color-scheme: dark) {
-  ::-webkit-scrollbar-thumb {
-    background: #000;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #333;
-  }
+  background: linear-gradient(180deg, #00D4FF, #7B2FBE);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+  background: #00D4FF;
 }
 
-/* Custom utility classes */
+/* Custom CSS styles */
+.font-display {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.font-code {
+  font-family: 'Fira Code', monospace;
+}
+
+.glass-card {
+  background: rgba(13, 27, 42, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(5, 8, 22, 0.37);
+}
+
+.glass-input {
+  background: rgba(5, 8, 22, 0.5);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: #00D4FF;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+  outline: none;
+}
+
 .text-gradient {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #00D4FF 0%, #7B2FBE 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.glass-effect {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.border-gradient {
+  border-image: linear-gradient(to right, #00D4FF, #7B2FBE) 1;
 }
 
-.shadow-3xl {
-  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+/* Particles / Starfield background style */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
 }
 
-@media (prefers-color-scheme: dark) {
-  .shadow-3xl {
-    box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.5);
+/* Custom cursor style helper to hide default cursor when trailing */
+@media (pointer: fine) {
+  .custom-cursor-active {
+    cursor: none !important;
   }
 }
