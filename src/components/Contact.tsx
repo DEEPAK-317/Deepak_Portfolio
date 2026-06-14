@@ -1,14 +1,6 @@
 import { useState } from "react";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Github,
-  Linkedin,
-  Loader2,
-  CheckCircle2,
-} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Send, Github, Linkedin, Loader2, CheckCircle2, MessageSquare } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,22 +10,20 @@ const Contact = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success">("idle");
+  const [showToast, setShowToast] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus("idle");
 
+    // Simulate sending time
     setTimeout(() => {
       const subject = encodeURIComponent(formData.subject || "Portfolio Contact");
       const body = encodeURIComponent(
@@ -50,286 +40,228 @@ const Contact = () => {
         message: "",
       });
       setIsSubmitting(false);
-      setSubmitStatus("success");
+      setShowToast(true);
 
+      // Dismiss toast after 4 seconds
       setTimeout(() => {
-        setSubmitStatus("idle");
+        setShowToast(false);
       }, 4000);
     }, 1500);
   };
 
   const contactInfo = [
     {
-      icon: <Mail className="text-primary-600" size={24} />,
+      icon: <Mail className="text-cyanAccent" size={20} />,
       title: "Email",
       value: "deepaknittrichy@gmail.com",
-      link: "https://mail.google.com/mail/?view=cm&to=deepaknittrichy@gmail.com",
+      link: "mailto:deepaknittrichy@gmail.com",
     },
     {
-      icon: <Linkedin className="text-blue-600" size={24} />,
+      icon: <Linkedin className="text-violetAccent" size={20} />,
       title: "LinkedIn",
       value: "linkedin.com/in/deepak-kumar-62a4b8270",
       link: "https://www.linkedin.com/in/deepak-kumar-62a4b8270/",
     },
     {
-      icon: <Phone className="text-green-600" size={24} />,
-      title: "Phone",
-      value: "+91 6201967186",
-      link: "tel:+916201967186",
-    },
-    {
-      icon: <MapPin className="text-red-600" size={24} />,
-      title: "Location",
-      value: "Trichy, Tamil Nadu, India",
-      link: "https://maps.google.com/?q=Trichy,Tamil+Nadu,India",
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github size={20} />,
-      name: "GitHub",
-      url: "https://github.com/DEEPAK-317",
-      color: "hover:bg-gray-800",
-    },
-    {
-      icon: <Linkedin size={20} />,
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/deepak-kumar-62a4b8270/",
-      color: "hover:bg-blue-600",
-    },
-    {
-      icon: <Mail size={20} />,
-      name: "Email",
-      url: "https://mail.google.com/mail/?view=cm&to=deepaknittrichy@gmail.com",
-      color: "hover:bg-primary-600",
+      icon: <Github className="text-white" size={20} />,
+      title: "GitHub",
+      value: "github.com/DEEPAK-317",
+      link: "https://github.com/DEEPAK-317",
     },
   ];
 
   return (
-    <section id="contact" className="py-20 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <section id="contact" className="py-[120px] bg-spaceBg relative">
+      <div className="max-w-[1200px] mx-auto px-6">
+        
+        {/* Section Heading */}
+        <div className="mb-16">
+          <motion.h2
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="font-display font-bold text-4xl md:text-5xl text-white relative w-fit"
+          >
             Get In Touch
-          </h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
-          <p className="text-lg text-gray-600 dark:text-white mt-4 max-w-2xl mx-auto">
-            Let’s collaborate on your next project or discuss opportunities.
-            I’m always excited to work on innovative solutions.
-          </p>
+            <motion.span 
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-cyanAccent to-violetAccent"
+            />
+          </motion.h2>
         </div>
 
-        {/* Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left: Info */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Let’s Connect
+        {/* Dual Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          
+          {/* Left Details Info */}
+          <div className="lg:col-span-5 flex flex-col justify-between">
+            <div className="space-y-6">
+              <h3 className="font-display font-bold text-3xl leading-tight text-white">
+                Let's Build <br />
+                <span className="text-gradient">Something Great</span>
               </h3>
-              <p className="text-gray-600 dark:text-white mb-8 leading-relaxed">
-                I'm always interested in new opportunities, collaborations,
-                and exciting projects. Whether you have a question or want
-                to discuss something, feel free to reach out!
+              <p className="text-textMuted leading-relaxed text-sm">
+                I'm always open to new software engineering projects, technical discussions, and professional network building. Feel free to ping me!
               </p>
+
+              {/* Status pills */}
+              <div className="space-y-2 pt-2">
+                <p className="font-code text-xs text-textMuted tracking-wider">CURRENTLY OPEN TO</p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="px-3 py-1 bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/20 rounded-full text-xs font-code">
+                    Full-time Roles
+                  </span>
+                  <span className="px-3 py-1 bg-violetAccent/10 text-violetAccent border border-violetAccent/20 rounded-full text-xs font-code">
+                    Internships
+                  </span>
+                  <span className="px-3 py-1 bg-neonGreen/10 text-neonGreen border border-neonGreen/20 rounded-full text-xs font-code">
+                    Freelance Projects
+                  </span>
+                </div>
+              </div>
             </div>
 
-            {/* Contact Details */}
-            <div className="space-y-6">
-              {contactInfo.map((item, index) => (
+            {/* Clickable Card list */}
+            <div className="space-y-4 mt-8 lg:mt-0">
+              {contactInfo.map((item, idx) => (
                 <a
-                  key={index}
+                  key={idx}
                   href={item.link}
-                  className="flex items-center p-4 bg-gray-50 dark:bg-black rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-900 transition-colors group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center p-4 rounded-xl bg-spaceCard/50 border border-cyanAccent/10 hover:border-cyanAccent/35 transition-all group"
                 >
-                  <div className="flex-shrink-0 mr-4">{item.icon}</div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400">
+                  <div className="p-3 bg-spaceBg rounded-lg group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <div className="ml-4">
+                    <h4 className="font-display font-bold text-sm text-white group-hover:text-cyanAccent transition">
                       {item.title}
                     </h4>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      {item.value}
-                    </p>
+                    <p className="font-code text-xs text-textMuted mt-0.5">{item.value}</p>
                   </div>
                 </a>
               ))}
             </div>
 
-            {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                Follow Me
-              </h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`p-3 bg-gray-100 dark:bg-black text-gray-700 dark:text-white rounded-lg transition-all duration-300 hover:text-white ${social.color} transform hover:scale-110`}
-                    aria-label={social.name}
-                  >
-                    {social.icon}
-                  </a>
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Right: Contact Form */}
-          <div className="bg-gray-50 dark:bg-zinc-900 p-8 rounded-xl shadow-lg">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Send Me a Message
-            </h3>
+          {/* Right message form */}
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="glass-card p-6 md:p-8 rounded-2xl"
+            >
+              <h3 className="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+                <MessageSquare size={20} className="text-cyanAccent" />
+                Send a Direct Message
+              </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-code text-textMuted mb-2">NAME *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="Your Name"
+                      className="w-full px-4 py-3 rounded-lg glass-input text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-code text-textMuted mb-2">EMAIL *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="email@example.com"
+                      className="w-full px-4 py-3 rounded-lg glass-input text-sm"
+                    />
+                  </div>
+                </div>
+
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 dark:text-white mb-2"
-                  >
-                    Name *
-                  </label>
+                  <label className="block text-xs font-code text-textMuted mb-2">SUBJECT</label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    name="subject"
+                    value={formData.subject}
                     onChange={handleChange}
-                    required
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-gray-900 dark:text-white transition-colors"
+                    placeholder="Project Inquiry / Job Pitch"
+                    className="w-full px-4 py-3 rounded-lg glass-input text-sm"
                   />
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 dark:text-white mb-2"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                  <label className="block text-xs font-code text-textMuted mb-2">MESSAGE *</label>
+                  <textarea
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
                     required
-                    placeholder="your.email@example.com"
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-gray-900 dark:text-white transition-colors"
+                    rows={5}
+                    placeholder="Tell me about your project context or requirements..."
+                    className="w-full px-4 py-3 rounded-lg glass-input text-sm resize-none"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 dark:text-white mb-2"
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 rounded-lg bg-gradient-to-r from-cyanAccent to-violetAccent text-white font-bold text-sm tracking-wide shadow-lg shadow-cyanAccent/20 hover:shadow-cyanAccent/35 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center gap-2"
                 >
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="What's this about?"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-gray-900 dark:text-white transition-colors"
-                />
-              </div>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      Dispatching to Gmail...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={16} />
+                      Send Message
+                    </>
+                  )}
+                </button>
 
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-white mb-2"
-                >
-                  Message *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={6}
-                  required
-                  placeholder="Tell me about your project or just say hello!"
-                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-primary-500 bg-white dark:bg-black text-gray-900 dark:text-white transition-colors resize-none"
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full flex items-center justify-center px-8 py-3 rounded-lg shadow-lg transition-all duration-300 transform font-semibold text-white ${
-                  submitStatus === "success"
-                    ? "bg-green-600 hover:bg-green-700 hover:scale-105"
-                    : isSubmitting
-                    ? "bg-purple-700 cursor-not-allowed opacity-90"
-                    : "bg-primary-600 hover:bg-primary-700 hover:scale-105"
-                }`}
-              >
-                {submitStatus === "success" ? (
-                  <>
-                    <CheckCircle2 size={20} className="mr-2 animate-bounce" />
-                    Gmail Compose Opened!
-                  </>
-                ) : isSubmitting ? (
-                  <>
-                    <Loader2 size={20} className="mr-2 animate-spin" />
-                    Opening Gmail...
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} className="mr-2" />
-                    Send Message
-                  </>
-                )}
-              </button>
-            </form>
+              </form>
+            </motion.div>
           </div>
+
         </div>
 
-        {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-black dark:to-black p-8 rounded-xl">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Ready to Work Together?
-            </h3>
-            <p className="text-gray-600 dark:text-white mb-6 max-w-2xl mx-auto">
-              I'm currently available for freelance projects, full-time
-              opportunities, and exciting collaborations. Let’s create
-              something amazing together!
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="https://mail.google.com/mail/?view=cm&to=deepaknittrichy@gmail.com&su=Project%20Discussion"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              >
-                <Mail size={16} className="mr-2" />
-                Start a Project
-              </a>
-
-              <a
-                href="https://mail.google.com/mail/?view=cm&to=deepaknittrichy@gmail.com&su=Job%20Opportunity"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Hire Me
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
+
+      {/* Success Toast Alert */}
+      <AnimatePresence>
+        {showToast && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 50, scale: 0.8 }}
+            className="fixed bottom-8 right-6 z-[9999] flex items-center p-4 bg-spaceCard border border-neonGreen/30 rounded-xl shadow-2xl shadow-black/80 max-w-sm"
+          >
+            <div className="p-2 bg-neonGreen/10 text-neonGreen rounded-lg mr-3">
+              <CheckCircle2 size={20} className="animate-bounce" />
+            </div>
+            <div>
+              <h4 className="font-display font-bold text-sm text-white">Gmail Compose Opened!</h4>
+              <p className="text-textMuted text-xs mt-0.5">Please send the drafted mail from Gmail.</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 };
