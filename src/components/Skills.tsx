@@ -29,27 +29,25 @@ const Skills = () => {
   const skillIcons: { [key: string]: React.JSX.Element } = {
     'Python': <FaPython className="text-blue-500" size={20} />,
     'JavaScript': <DiJavascript1 className="text-yellow-500" size={20} />,
-    'C/C++': <Code className="text-blue-600" size={20} />,
-    'HTML/CSS': <FaHtml5 className="text-orange-500" size={20} />,
+    'TypeScript': <Code className="text-blue-600" size={20} />,
+    'C++': <Code className="text-blue-600" size={20} />,
+    'Next.js': <Globe className="text-gray-800 dark:text-white" size={20} />,
     'React': <FaReact className="text-blue-400" size={20} />,
-    'Flask': <SiFlask className="text-gray-800 dark:text-white" size={20} />,
-    'Django': <SiDjango className="text-green-700" size={20} />,
-    'OpenAI': <SiOpenai className="text-green-600" size={20} />,
-    'OpenAI function calling': <SiOpenai className="text-green-600" size={20} />,
-    'OpenCV': <SiOpencv className="text-blue-600" size={20} />,
-    'Tesseract OCR': <Brain className="text-purple-600" size={20} />,
-    'SVM Models': <Brain className="text-purple-600" size={20} />,
-    'NumPy': <SiNumpy className="text-blue-600" size={20} />,
-    'Pandas': <SiPandas className="text-purple-600" size={20} />,
-    'scikit-learn': <SiScikitlearn className="text-orange-500" size={20} />,
+    'React Native': <FaReact className="text-blue-400" size={20} />,
+    'Flutter': <Globe className="text-blue-400" size={20} />,
+    'Node.js': <Code className="text-green-500" size={20} />,
+    'Express.js': <Code className="text-gray-500" size={20} />,
+    'FastAPI': <Code className="text-green-500" size={20} />,
     'PostgreSQL': <DiPostgresql className="text-blue-600" size={20} />,
     'MongoDB': <DiMongodb className="text-green-600" size={20} />,
-    'MySQL': <DiMysql className="text-blue-500" size={20} />,
-    'PowerBI': <Database className="text-yellow-500" size={20} />,
+    'Redis': <Database className="text-red-500" size={20} />,
+    'Prisma ORM': <Database className="text-blue-500" size={20} />,
+    'LangChain': <Brain className="text-green-600" size={20} />,
+    'Pinecone Vector DB': <Database className="text-purple-600" size={20} />,
+    'Gemini API': <Brain className="text-indigo-500" size={20} />,
     'Docker': <FaDocker className="text-blue-500" size={20} />,
-    'Confluence': <SiConfluence className="text-blue-600" size={20} />,
-    'Git': <FaGitAlt className="text-orange-600" size={20} />,
-    'GitHub': <FaGithub className="text-gray-800 dark:text-white" size={20} />
+    'AWS': <Globe className="text-yellow-600" size={20} />,
+    'Git & GitHub': <FaGithub className="text-gray-800 dark:text-white" size={20} />
   };
 
   const skillCategories = [
@@ -58,53 +56,44 @@ const Skills = () => {
       icon: <Code className="text-blue-600" size={24} />,
       skills: [
         { name: 'Python' },
+        { name: 'TypeScript' },
         { name: 'JavaScript' },
-        { name: 'C/C++' },
-        { name: 'HTML/CSS' }
+        { name: 'C++' }
       ]
     },
     {
-      title: 'Frameworks',
+      title: 'Frontend & Mobile',
       icon: <Globe className="text-green-600" size={24} />,
       skills: [
+        { name: 'Next.js' },
         { name: 'React' },
-        { name: 'Flask' },
-        { name: 'Django' }
+        { name: 'React Native' },
+        { name: 'Flutter' }
       ]
     },
     {
-      title: 'AI/ML',
-      icon: <Brain className="text-purple-600" size={24} />,
-      skills: [
-        { name: 'OpenAI' },
-        { name: 'OpenAI function calling' },
-        { name: 'OpenCV' },
-        { name: 'Tesseract OCR' },
-        { name: 'SVM Models' },
-        { name: 'NumPy' },
-        { name: 'Pandas' },
-        { name: 'scikit-learn' }
-      ]
-    },
-    {
-      title: 'Databases/Tools',
+      title: 'Backend & Databases',
       icon: <Database className="text-orange-600" size={24} />,
       skills: [
+        { name: 'Node.js' },
+        { name: 'Express.js' },
+        { name: 'FastAPI' },
         { name: 'PostgreSQL' },
         { name: 'MongoDB' },
-        { name: 'MySQL' },
-        { name: 'PowerBI' },
-        { name: 'Docker' },
-        { name: 'Confluence' }
+        { name: 'Redis' },
+        { name: 'Prisma ORM' }
       ]
     },
     {
-      title: 'DevOps & Version Control',
-      icon: <GitBranch className="text-red-600" size={24} />,
+      title: 'AI, Cloud & DevOps',
+      icon: <Brain className="text-purple-600" size={24} />,
       skills: [
-        { name: 'Git' },
-        { name: 'GitHub' },
-        { name: 'Docker' }
+        { name: 'LangChain' },
+        { name: 'Pinecone Vector DB' },
+        { name: 'Gemini API' },
+        { name: 'Docker' },
+        { name: 'AWS' },
+        { name: 'Git & GitHub' }
       ]
     }
   ];
@@ -122,7 +111,7 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, index) => (
             <div
               key={index}
@@ -154,25 +143,23 @@ const Skills = () => {
           ))}
         </div>
 
-        
-
-        {/* Certifications or Achievements */}
+        {/* Key Achievements */}
         <div className="mt-12 text-center">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
             Key Achievements
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
             <span className="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-lg text-sm font-medium">
-              87% Accuracy SVM Model
+              92% RAG Retrieval Accuracy
             </span>
             <span className="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg text-sm font-medium">
-              13K+ Employee Records Processed
+              10K+ Concurrent Users Scaled
             </span>
             <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-lg text-sm font-medium">
-              80% Manual Effort Reduction
+              35% Redis Query Speedup
             </span>
             <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-lg text-sm font-medium">
-              25+ Qualified Leads Generated
+              40% Server Load Reduction
             </span>
           </div>
         </div>
