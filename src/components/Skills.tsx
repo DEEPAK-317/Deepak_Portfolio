@@ -1,168 +1,128 @@
-import { Code, Database, Globe, Brain, GitBranch } from 'lucide-react';
-import { 
-  FaPython, 
-  FaReact, 
-  FaHtml5, 
-  FaGitAlt, 
-  FaGithub, 
-  FaDocker 
-} from 'react-icons/fa';
-import { 
-  DiJavascript1, 
-  DiMongodb, 
-  DiMysql, 
-  DiPostgresql 
-} from 'react-icons/di';
-import { 
-  SiFlask, 
-  SiDjango, 
-  SiOpenai, 
-  SiOpencv, 
-  SiNumpy, 
-  SiPandas, 
-  SiScikitlearn, 
-  SiConfluence 
-} from 'react-icons/si';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { skillCategories } from "../data/skills";
 
 const Skills = () => {
-  // Icon mapping for each skill
-  const skillIcons: { [key: string]: React.JSX.Element } = {
-    'Python': <FaPython className="text-blue-500" size={20} />,
-    'JavaScript': <DiJavascript1 className="text-yellow-500" size={20} />,
-    'TypeScript': <Code className="text-blue-600" size={20} />,
-    'C++': <Code className="text-blue-600" size={20} />,
-    'Next.js': <Globe className="text-gray-800 dark:text-white" size={20} />,
-    'React': <FaReact className="text-blue-400" size={20} />,
-    'React Native': <FaReact className="text-blue-400" size={20} />,
-    'Flutter': <Globe className="text-blue-400" size={20} />,
-    'Node.js': <Code className="text-green-500" size={20} />,
-    'Express.js': <Code className="text-gray-500" size={20} />,
-    'FastAPI': <Code className="text-green-500" size={20} />,
-    'PostgreSQL': <DiPostgresql className="text-blue-600" size={20} />,
-    'MongoDB': <DiMongodb className="text-green-600" size={20} />,
-    'Redis': <Database className="text-red-500" size={20} />,
-    'Prisma ORM': <Database className="text-blue-500" size={20} />,
-    'LangChain': <Brain className="text-green-600" size={20} />,
-    'Pinecone Vector DB': <Database className="text-purple-600" size={20} />,
-    'Gemini API': <Brain className="text-indigo-500" size={20} />,
-    'Docker': <FaDocker className="text-blue-500" size={20} />,
-    'AWS': <Globe className="text-yellow-600" size={20} />,
-    'Git & GitHub': <FaGithub className="text-gray-800 dark:text-white" size={20} />
-  };
+  const [activeTab, setActiveTab] = useState("frontend");
 
-  const skillCategories = [
-    {
-      title: 'Languages',
-      icon: <Code className="text-blue-600" size={24} />,
-      skills: [
-        { name: 'Python' },
-        { name: 'TypeScript' },
-        { name: 'JavaScript' },
-        { name: 'C++' }
-      ]
-    },
-    {
-      title: 'Frontend & Mobile',
-      icon: <Globe className="text-green-600" size={24} />,
-      skills: [
-        { name: 'Next.js' },
-        { name: 'React' },
-        { name: 'React Native' },
-        { name: 'Flutter' }
-      ]
-    },
-    {
-      title: 'Backend & Databases',
-      icon: <Database className="text-orange-600" size={24} />,
-      skills: [
-        { name: 'Node.js' },
-        { name: 'Express.js' },
-        { name: 'FastAPI' },
-        { name: 'PostgreSQL' },
-        { name: 'MongoDB' },
-        { name: 'Redis' },
-        { name: 'Prisma ORM' }
-      ]
-    },
-    {
-      title: 'AI, Cloud & DevOps',
-      icon: <Brain className="text-purple-600" size={24} />,
-      skills: [
-        { name: 'LangChain' },
-        { name: 'Pinecone Vector DB' },
-        { name: 'Gemini API' },
-        { name: 'Docker' },
-        { name: 'AWS' },
-        { name: 'Git & GitHub' }
-      ]
-    }
-  ];
+  const activeCategory = skillCategories.find((cat) => cat.id === activeTab) || skillCategories[0];
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Technical Skills
-          </h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
-          <p className="text-lg text-gray-600 dark:text-white mt-4 max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and proficiency levels
-          </p>
+    <section id="skills" className="py-[120px] bg-spaceBg/50 relative border-t border-b border-cyanAccent/5">
+      <div className="max-w-[1200px] mx-auto px-6">
+        
+        {/* Section Heading */}
+        <div className="mb-16 text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="font-display font-bold text-4xl md:text-5xl text-white relative w-fit mx-auto"
+          >
+            Technical Toolkit
+            <motion.span 
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-cyanAccent to-violetAccent"
+            />
+          </motion.h2>
+          <p className="text-textMuted mt-6 font-code text-sm">PROFICIENCIES & EXPERTISE LEVELS</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skillCategories.map((category, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-black p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+        {/* Tab Switcher */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12 max-w-lg mx-auto bg-spaceCard/50 p-1 rounded-xl border border-cyanAccent/10 backdrop-blur-md">
+          {skillCategories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveTab(category.id)}
+              className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-colors font-sans flex-1 ${
+                activeTab === category.id ? "text-white" : "text-textMuted hover:text-white"
+              }`}
             >
-              <div className="flex items-center mb-6">
-                {category.icon}
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white ml-3">
-                  {category.title}
-                </h3>
-              </div>
-
-              <div className="grid grid-cols-1 gap-3">
-                {category.skills.map((skill, skillIndex) => (
-                  <div 
-                    key={skillIndex} 
-                    className="flex items-center gap-3 p-3 rounded-lg bg-gray-50 dark:bg-black hover:bg-gray-100 dark:hover:bg-black transition-colors duration-200"
-                  >
-                    <div className="flex-shrink-0">
-                      {skillIcons[skill.name] || <Code className="text-gray-500" size={20} />}
-                    </div>
-                    <span className="text-sm font-medium text-gray-700 dark:text-white">
-                      {skill.name}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
+              {category.title.split(" ")[0]} {/* Shorten label for neat display */}
+              {activeTab === category.id && (
+                <motion.span
+                  layoutId="activeTabIndicator"
+                  className="absolute inset-0 bg-gradient-to-r from-cyanAccent/20 to-violetAccent/20 border border-cyanAccent/30 rounded-lg -z-10"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+            </button>
           ))}
         </div>
 
-        {/* Key Achievements */}
-        <div className="mt-12 text-center">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+        {/* Skill Card Grid */}
+        <motion.div
+          layout
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          <AnimatePresence mode="popLayout">
+            {activeCategory.skills.map((skill, index) => (
+              <motion.div
+                key={skill.name}
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                whileHover={{ y: -5, rotate: index % 2 === 0 ? 1 : -1 }}
+                className="glass-card p-6 rounded-2xl flex flex-col justify-between shadow-md border-t border-t-cyanAccent/10 hover:shadow-cyanAccent/10 hover:border-cyanAccent/35 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <span className="text-2xl p-2 bg-spaceBg rounded-lg">{skill.icon}</span>
+                    <span className="font-display font-bold text-white text-base">{skill.name}</span>
+                  </div>
+                  <span className="font-code text-xs px-2.5 py-1 rounded-full bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/20">
+                    {skill.level}
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs font-code text-textMuted">
+                    <span>Proficiency</span>
+                    <span>{skill.percentage}%</span>
+                  </div>
+                  {/* Skill level meter bar */}
+                  <div className="w-full h-2 bg-spaceBg rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.percentage}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                      className="h-full bg-gradient-to-r from-cyanAccent to-violetAccent rounded-full"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Key achievements metrics */}
+        <div className="mt-16 text-center">
+          <h3 className="text-xl font-display font-semibold text-white mb-6">
             Key Achievements
           </h3>
           <div className="flex flex-wrap justify-center gap-4">
-            <span className="px-4 py-2 bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-lg text-sm font-medium">
-              92% RAG Retrieval Accuracy
+            <span className="px-4 py-2 border border-cyanAccent/20 bg-spaceCard/50 text-cyanAccent rounded-lg text-xs font-code">
+              🚀 92% RAG Retrieval Accuracy
             </span>
-            <span className="px-4 py-2 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-lg text-sm font-medium">
-              10K+ Concurrent Users Scaled
+            <span className="px-4 py-2 border border-violetAccent/20 bg-spaceCard/50 text-violetAccent rounded-lg text-xs font-code">
+              📈 10K+ Concurrent Users Scaled
             </span>
-            <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-lg text-sm font-medium">
-              35% Redis Query Speedup
+            <span className="px-4 py-2 border border-neonGreen/20 bg-spaceCard/50 text-neonGreen rounded-lg text-xs font-code">
+              ⚡ 35% Redis Query Speedup
             </span>
-            <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-lg text-sm font-medium">
-              40% Server Load Reduction
+            <span className="px-4 py-2 border border-cyanAccent/20 bg-spaceCard/50 text-cyanAccent rounded-lg text-xs font-code">
+              📦 40% Server Load Reduction
             </span>
           </div>
         </div>
+
       </div>
     </section>
   );
