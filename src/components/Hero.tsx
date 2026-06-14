@@ -8,17 +8,17 @@ const Hero = () => {
           {/* Left side - Profile Image - FULL SIZE */}
           <div className="flex justify-center md:justify-start order-2 md:order-1">
             <div className="relative">
-              <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-purple-500 shadow-2xl shadow-purple-500/50 hover:shadow-purple-500/80 transition-all duration-300">
+              <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden border-4 border-purple-500 shadow-2xl shadow-purple-500/50 hover:shadow-purple-500/80 transition-all duration-300">
                 <img 
-                  src="/profile.jpg" 
+                  src="https://github.com/DEEPAK-317.png" 
                   alt="Deepak Kumar Profile" 
-                  className="w-full h-full object-cover object-center scale-100"
+                  className="w-full h-full object-contain bg-zinc-950 scale-100"
                   style={{
-                    objectFit: 'cover',
+                    objectFit: 'contain',
                     objectPosition: 'center center'
                   }}
                   onError={(e) => {
-                    e.currentTarget.src = 'https://via.placeholder.com/400x400/1a1a1a/8b5cf6?text=Deepak+Kumar';
+                    e.currentTarget.src = 'https://avatars.githubusercontent.com/u/161968065?v=4';
                   }}
                 />
               </div>
@@ -35,18 +35,18 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-6">
-              I'm a <span className="text-purple-400 font-semibold">Full Stack Developer & AI Enthusiast|</span>
+              I'm a <span className="text-purple-400 font-semibold">Software Development Engineer |</span>
             </p>
             
             <div className="text-gray-400 text-base md:text-lg space-y-2 mb-8">
               <p>
-                Computer Science student at <span className="text-blue-400 font-semibold">NIT Trichy</span> with expertise in
+                SDE at <span className="text-purple-400 font-semibold">DailyKaam</span> and Computer Science student at <span className="text-blue-400 font-semibold">NIT Trichy</span>
               </p>
               <p>
-                <span className="text-purple-400">Full-Stack Development</span>, <span className="text-blue-400">AI/ML</span>, and <span className="text-purple-400">Modern Automation Technologies</span>.
+                Specializing in <span className="text-purple-400">Full-Stack Architectures</span>, <span className="text-blue-400">Generative AI (RAG)</span>, and <span className="text-purple-400">Distributed Backend Systems</span>.
               </p>
               <p className="mt-4">
-                Passionate about building <span className="text-purple-400">Innovative Solutions</span> and delivering <span className="text-blue-400">Impactful Projects</span>.
+                Designing and shipping production-grade platforms engineered for high throughput and latency optimizations.
               </p>
             </div>
 
