@@ -6,52 +6,43 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        spaceBg: "#050816",
+        spaceCard: "#0D1B2A",
+        cyanAccent: "#00D4FF",
+        violetAccent: "#7B2FBE",
+        neonGreen: "#00FF88",
+        textMuted: "#8892A4",
+      },
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
+        sans: ["Inter", "sans-serif"],
+        display: ["Space Grotesk", "sans-serif"],
+        code: ["Fira Code", "monospace"],
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
-        'slide-up': 'slideUp 0.5s ease-out',
-        'bounce-slow': 'bounce 2s infinite',
+        'shimmer': 'shimmer 2.5s linear infinite',
+        'orbit': 'orbit 20s linear infinite',
+        'float-slow': 'floatSlow 4s ease-in-out infinite',
+        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+        'draw-path': 'drawPath 2s ease-in-out forwards',
+        'gradient-drift': 'gradientDrift 10s ease infinite',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         },
-        slideUp: {
-          '0%': { transform: 'translateY(20px)', opacity: '0' },
-          '100%': { transform: 'translateY(0)', opacity: '1' },
+        floatSlow: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-15px)' },
         },
-      },
-      colors: {
-        primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
+        pulseGlow: {
+          '0%, 100%': { boxShadow: '0 0 15px rgba(0, 212, 255, 0.3)' },
+          '50%': { boxShadow: '0 0 35px rgba(0, 212, 255, 0.7)' },
         },
-        // Custom color for dark mode
-        'dark-black': '#000000',
-        // Override gray colors for dark mode
-        gray: {
-          50: '#f9fafb',
-          100: '#f3f4f6',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#000000', // Map to black for dark mode
-          900: '#000000', // Map to black for dark mode
-          950: '#000000', // Map to black for dark mode
+        gradientDrift: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
         },
       },
     },
