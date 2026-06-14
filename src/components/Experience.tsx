@@ -3,62 +3,50 @@ import { Briefcase, MapPin, Calendar, ExternalLink } from 'lucide-react';
 const Experience = () => {
   const experiences = [
     {
-      title: 'AI Intern',
+      title: 'Software Development Engineer',
+      company: 'DailyKaam',
+      location: 'Remote / Hybrid, India',
+      duration: 'August 2025 – Present',
+      type: 'Full-time',
+      description: [
+        'Develop and scale customer-facing web and mobile applications using React, Next.js, and React Native.',
+        'Design, optimize, and maintain RESTful backend APIs, database connections, and core business workflows in Node.js/Express.',
+        'Improve application performance, reliability, and automated deployment checks utilizing Docker and AWS services.',
+        'Collaborate across product, engineering, and operations teams to launch production-ready features with low latencies.',
+        'Contribute to database design, relational query optimizations, and continuous system monitoring in PostgreSQL/MongoDB.'
+      ],
+      skills: ['React', 'Next.js', 'Node.js', 'Express.js', 'PostgreSQL', 'MongoDB', 'Docker', 'AWS'],
+      color: 'bg-indigo-600'
+    },
+    {
+      title: 'Generative AI Intern',
       company: 'Nelumbus Technologies LLP',
       location: 'Remote',
       duration: 'June 2025 – July 2025',
       type: 'Internship',
       description: [
-        'Designed intelligent AI workflows improving process efficiency by 25%.',
-        'Optimized Large Language Model (LLM) responses through advanced prompt engineering, boosting accuracy by 18%.',
-        'Integrated multiple AI models into cohesive frameworks, reducing development time by 30%.'
+        'Designed and built Retrieval-Augmented Generation (RAG) applications integrating modern LLMs with OpenAI API and LangChain.',
+        'Implemented semantic search, vector embedding pipelines, and multi-model AI workflows to process unstructured document logs.',
+        'Improved response accuracy by 18% and operational efficiency by 25%, while reducing development iterations by 30%.'
       ],
-      skills: ['Python', 'AI', 'Prompt Engineering', 'LLM Integration', 'Automation'],
+      skills: ['Python', 'LangChain', 'OpenAI APIs', 'RAG', 'Semantic Search', 'Vector Databases'],
       color: 'bg-green-500'
     },
     {
-      title: 'Full Stack Intern (M-Commerce Application Development)',
-      company: 'National Institute of Technology, Trichy',
+      title: 'Full Stack Intern',
+      company: 'National Institute of Technology (NIT), Trichy',
       location: 'Trichy, Tamil Nadu, India',
       duration: 'July 2024 – August 2024',
       type: 'Internship',
       description: [
-        'Developed a scalable M-Commerce application using the MERN stack with PWA features.',
-        'Deployed via AWS & Vercel serverless functions to handle 10,000+ concurrent users (<200ms latency).',
-        'Implemented Redis caching, DB indexing, and sharding to improve query performance by 35% and reduce server load by 40%.',
-        'Integrated Stripe/Razorpay payments and real-time push notifications for a secure, cross-platform commerce solution.'
+        'Developed a scalable MERN-based M-Commerce platform with Progressive Web App (PWA) support.',
+        'Implemented Redis caching, database indexing, and collection sharding strategies, improving query performance by 35%.',
+        'Reduced server load by 40% through backend optimization and efficient data access patterns.',
+        'Deployed applications on AWS and Vercel, supporting 10,000+ concurrent users with low-latency performance (<200ms).',
+        'Built automated CI/CD staging pipelines using GitHub Actions to accelerate deployments.'
       ],
-      skills: ['MERN Stack', 'AWS', 'Redis', 'PWA', 'Stripe', 'Razorpay', 'Serverless'],
+      skills: ['MERN Stack', 'Redis', 'AWS', 'Vercel', 'GitHub Actions', 'PWA'],
       color: 'bg-blue-500'
-    },
-    {
-      title: 'Web Development Intern',
-      company: 'Main Flow Services & Technologies',
-      location: 'Remote',
-      duration: 'Dec 2025 – Jan 2025',
-      type: 'Internship',
-      description: [
-        'Built responsive full-stack web applications, improving load speed by 40%.',
-        'Enhanced UI/UX design, resulting in 25% higher user engagement.',
-        'Developed scalable SaaS templates using Next.js 15 with TypeScript, NextAuth.js authentication, and Stripe payment integration.',
-        'Configured PostgreSQL with Drizzle ORM and Resend email service for transactional workflows.'
-      ],
-      skills: ['Next.js', 'TypeScript', 'NextAuth.js', 'Stripe', 'PostgreSQL', 'Drizzle ORM', 'Tailwind CSS'],
-      color: 'bg-purple-500'
-    },
-    {
-      title: 'Cybersecurity Intern',
-      company: 'Indian Institute of Technology, Patna (Dr. Mayank Agarwal)',
-      location: 'Patna, Bihar, India',
-      duration: 'May 2024 – June 2024',
-      type: 'Research Internship',
-      description: [
-        'Worked on the project “Detection of Cyber-Security Attacks using ML and DL”.',
-        'Applied machine learning and deep learning models for intrusion detection and anomaly analysis.',
-        'Contributed to model development, dataset processing, and performance evaluation during the internship.'
-      ],
-      skills: ['Cybersecurity', 'Machine Learning', 'Deep Learning', 'Intrusion Detection', 'Python'],
-      color: 'bg-red-500'
     }
   ];
 
@@ -67,11 +55,11 @@ const Experience = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Internship Experience
+            Professional Experience
           </h2>
           <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
           <p className="text-lg text-gray-600 dark:text-white mt-4 max-w-2xl mx-auto">
-            My journey through impactful internships and research projects that shaped my technical expertise.
+            My journey through software engineering roles and technical internships that shaped my expertise.
           </p>
         </div>
 
