@@ -18,7 +18,7 @@ const Footer = () => {
               D.D.R
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Full-stack developer and AI enthusiast passionate about creating innovative solutions. Currently pursuing Computer Science at NIT Trichy.
+              Software Development Engineer at DailyKaam and Computer Science student at NIT Trichy, passionate about building scalable backend systems, RAG architectures, and high-performance applications.
             </p>
             {/* Social Links */}
             <div className="flex gap-4">
