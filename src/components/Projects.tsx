@@ -1,286 +1,134 @@
-import { useState } from "react";
-import { Github, Calendar, Folder } from "lucide-react";
+import { motion } from "framer-motion";
+import { Github, ExternalLink, ArrowRight } from "lucide-react";
+import { projects } from "../data/projects";
 
 const Projects = () => {
-  const projects = [
-    {
-      title: "DDR AI Career Coach",
-      description:
-        "AI-powered SaaS career acceleration platform delivering automated resume parsing, mock technical interviews, and roadmaps.",
-      longDescription:
-        "Built a scalable Next.js career acceleration dashboard using Prisma ORM to save candidate states to a Neon PostgreSQL instance. Integrates Gemini Pro LLM with structured parser constraints to audit resume uploads against standard criteria and return line-by-line feedback in under 3 seconds.",
-      technologies: [
-        "Next.js",
-        "TypeScript",
-        "Gemini API",
-        "Prisma ORM",
-        "Neon PostgreSQL",
-        "TailwindCSS"
-      ],
-      duration: "June 2025 – Present",
-      category: "Full Stack",
-      featured: true,
-      liveUrl: "https://ddrai-career-coach.vercel.app/",
-      githubUrl: "https://github.com/DEEPAK-317/DDRAI-CAREER-COACH",
-    },
-    {
-      title: "RAG Document Q&A System",
-      description:
-        "Retrieval-Augmented Generation (RAG) system for conversational question answering over high-volume PDF logs.",
-      longDescription:
-        "Engineered document intelligence workflows in FastAPI using Python and LangChain. Configured semantic chunk splitters, Mistral dense embeddings, and Pinecone Vector database lookups with MMR retrieval strategies to mitigate hallucination rates and verify citations.",
-      technologies: [
-        "Python",
-        "FastAPI",
-        "LangChain",
-        "Pinecone Vector DB",
-        "Mistral API",
-        "HTML5",
-        "CSS3"
-      ],
-      duration: "May 2025 – July 2025",
-      category: "AI/ML",
-      featured: true,
-      liveUrl: "https://rag-document-qna-system.vercel.app/",
-      githubUrl: "https://github.com/DEEPAK-317/RAG_Document_QnA-_System",
-    },
-    {
-      title: "MERN M-Commerce Platform",
-      description:
-        "Scale-optimized M-Commerce store with PWA support, handling high concurrent loads.",
-      longDescription:
-        "Developed during NIT Trichy internship. Features Redis caching structures, index tuning, and database sharding configurations. Deployed on AWS and Vercel to support 10,000+ concurrent users with sub-200ms API response latencies.",
-      technologies: [
-        "MERN Stack",
-        "Redis",
-        "AWS",
-        "Vercel",
-        "GitHub Actions",
-        "PWA"
-      ],
-      duration: "July 2024 – August 2024",
-      category: "Full Stack",
-      featured: true,
-      liveUrl: "https://eshop-firebase.vercel.app/",
-      githubUrl: "https://github.com/DEEPAK-317/Intership_nextjs-saas-typescript",
-    },
-    {
-      title: "Explainable Fraud Detection System",
-      description:
-        "An interpretability-focused anomaly classifier using Isolation Forest and Random Forest pipelines.",
-      longDescription:
-        "Engineered predictive transaction classifiers using Python and Scikit-Learn. Integrates SHAP local explanation maps to generate and display decision pathways inside a Streamlit web portal, balancing high anomaly recall targets.",
-      technologies: [
-        "Python",
-        "Streamlit",
-        "Scikit-Learn",
-        "SHAP",
-        "Pandas",
-        "Matplotlib"
-      ],
-      duration: "March 2025 – April 2025",
-      category: "AI/ML",
-      featured: false,
-      liveUrl: "https://github.com/DEEPAK-317/explainable-fraud-detection",
-      githubUrl: "https://github.com/DEEPAK-317/explainable-fraud-detection",
-    },
-    {
-      title: "MailMate AI Email Companion",
-      description:
-        "Tone-customizable generative assistant generating context-aware email replies.",
-      longDescription:
-        "Created a prompt-engineered helper in Python and Streamlit. Routes tone configurations to Google Gemini API text generation endpoints, managing token payloads and rate bounds.",
-      technologies: [
-        "Python",
-        "Streamlit",
-        "Gemini API",
-        "Prompt Engineering"
-      ],
-      duration: "May 2025",
-      category: "AI/ML",
-      featured: false,
-      liveUrl: "https://github.com/DEEPAK-317/MailMate",
-      githubUrl: "https://github.com/DEEPAK-317/MailMate",
-    },
-    {
-      title: "NITT Student Track System",
-      description:
-        "Academic planners and scheduling dashboards with role-based JWT validation.",
-      longDescription:
-        "Built a responsive React/Express organizer with Express routes, JWT secure validation tokens, Mongoose database models, and interactive schedules.",
-      technologies: [
-        "Node.js",
-        "Express",
-        "MongoDB",
-        "Mongoose",
-        "JavaScript"
-      ],
-      duration: "January 2025 – February 2025",
-      category: "Full Stack",
-      featured: false,
-      liveUrl: "https://github.com/DEEPAK-317/Nitt-Student-Track",
-      githubUrl: "https://github.com/DEEPAK-317/Nitt-Student-Track",
-    },
-    {
-      title: "Split Expense sharing Mobile App",
-      description:
-        "Bill division ledger tracking engine for cross-platform mobile environments.",
-      longDescription:
-        "Engineered mobile application layouts in React Native communicating with Express API routes backing MongoDB. Implemented offline synchronization reconciliations.",
-      technologies: [
-        "TypeScript",
-        "React Native",
-        "Node.js",
-        "Express",
-        "MongoDB"
-      ],
-      duration: "February 2025",
-      category: "Platform",
-      featured: false,
-      liveUrl: "https://github.com/DEEPAK-317/Split-App",
-      githubUrl: "https://github.com/DEEPAK-317/Split-App",
-    },
-  ];
-
-  const categories = ["All", "Full Stack", "AI/ML", "Platform", "Research"];
-  const [activeCategory, setActiveCategory] = useState("All");
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
-
   return (
-    <section id="projects" className="py-20 bg-white dark:bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+    <section id="projects" className="py-[120px] bg-spaceBg relative">
+      <div className="max-w-[1200px] mx-auto px-6">
+        
+        {/* Section Heading */}
+        <div className="mb-16">
+          <motion.h2
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="font-display font-bold text-4xl md:text-5xl text-white relative w-fit"
+          >
             Featured Projects
-          </h2>
-          <div className="w-20 h-1 bg-primary-600 mx-auto"></div>
-          <p className="text-lg text-gray-600 dark:text-white mt-4 max-w-2xl mx-auto">
-            A showcase of my major projects in full-stack development, AI/ML,
-            and research.
-          </p>
+            <motion.span 
+              initial={{ width: 0 }}
+              whileInView={{ width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-cyanAccent to-violetAccent"
+            />
+          </motion.h2>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-primary-600 text-white shadow-lg"
-                  : "bg-gray-100 dark:bg-black text-gray-700 dark:text-white hover:bg-gray-200 dark:hover:bg-black"
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Project Cards */}
+        {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProjects.map((project, index) => (
-            <div
-              key={index}
-              className={`bg-gray-50 dark:bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 ${
-                project.featured ? "md:col-span-2" : ""
-              }`}
-            >
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-2">
-                    <Folder className="text-primary-600" size={20} />
-                    <span
-                      className={`px-2 py-1 text-xs font-medium rounded-full ${
-                        project.category === "Full Stack"
-                          ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
-                          : project.category === "AI/ML"
-                          ? "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200"
-                          : project.category === "Platform"
-                          ? "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200"
-                          : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
-                      }`}
-                    >
-                      {project.category}
-                    </span>
+          {projects.map((project, idx) => {
+            const isFeatured = project.size === "large";
+
+            return (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
+                whileHover={{ y: -8 }}
+                className={`glass-card rounded-2xl overflow-hidden shadow-lg border border-cyanAccent/15 hover:border-cyanAccent/40 hover:shadow-cyanAccent/10 group flex flex-col justify-between transition-all duration-300 ${
+                  isFeatured ? "md:col-span-2" : ""
+                }`}
+              >
+                {/* Upper portion */}
+                <div className="p-6 md:p-8 flex flex-col justify-between flex-grow">
+                  <div>
+                    {/* Category Badge & Links */}
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="font-code text-xs px-2.5 py-1 rounded-full bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/20">
+                        {project.category}
+                      </span>
+                      <div className="flex space-x-3">
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-textMuted hover:text-white transition"
+                        >
+                          <Github size={20} />
+                        </a>
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-textMuted hover:text-white transition"
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-3 tracking-wide">
+                      {project.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-textMuted leading-relaxed text-sm mb-6">
+                      {isFeatured ? project.longDescription : project.description}
+                    </p>
                   </div>
 
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 text-gray-600 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
-                      aria-label="GitHub repository"
-                    >
-                      <Github size={18} />
-                    </a>
-                  )}
+                  {/* Tech stack pills */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="font-code text-xs px-2.5 py-0.5 rounded bg-spaceBg border border-white/5 text-white/95"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* "View Project" link sliding on hover */}
+                  <div className="flex items-center space-x-2 text-cyanAccent text-sm font-semibold cursor-pointer">
+                    <span>View Project</span>
+                    <ArrowRight 
+                      size={16} 
+                      className="transform transition-transform duration-300 group-hover:translate-x-2"
+                    />
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                  {project.title}
-                </h3>
-
-                <div className="flex items-center text-sm text-gray-600 dark:text-white mb-4">
-                  <Calendar size={14} className="mr-1" />
-                  {project.duration}
-                </div>
-
-                <p className="text-gray-600 dark:text-white text-sm leading-relaxed mb-4">
-                  {project.featured
-                    ? project.longDescription
-                    : project.description}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.technologies.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-2 py-1 text-xs bg-white dark:bg-black text-gray-700 dark:text-white rounded border"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* GitHub Button */}
-                {project.githubUrl && (
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium rounded-lg transition-colors"
-                  >
-                    <Github size={14} className="mr-2" />
-                    View Code
-                  </a>
+                {/* featured mock browser window */}
+                {isFeatured && (
+                  <div className="mx-6 mb-6 rounded-t-xl bg-spaceBg/60 border border-white/10 p-3 flex flex-col space-y-2 select-none shadow-inner h-40">
+                    <div className="flex space-x-1.5 items-center">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                      <div className="w-32 h-3.5 bg-white/5 rounded-full text-[8px] font-code text-white/40 flex items-center justify-center">
+                        localhost:3000
+                      </div>
+                    </div>
+                    <div className="flex-grow flex items-center justify-center bg-spaceCard/30 rounded border border-white/5">
+                      <div className="font-code text-[10px] text-cyanAccent/70 animate-pulse">
+                        &gt; Rendering AI Assistant Platform...
+                      </div>
+                    </div>
+                  </div>
                 )}
-              </div>
-            </div>
-          ))}
+
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* View All CTA */}
-        <div className="text-center mt-16">
-          <p className="text-gray-600 dark:text-white mb-6">
-            Interested in exploring more of my work?
-          </p>
-          <a
-            href="https://github.com/DEEPAK-317"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-          >
-            <Github size={16} className="mr-2" />
-            View All Projects on GitHub
-          </a>
-        </div>
       </div>
     </section>
   );
