@@ -3,118 +3,142 @@ import { Github, Calendar, Folder } from "lucide-react";
 
 const Projects = () => {
   const projects = [
-    // 🔹 1. SaaS Template (Intern Project)
     {
-      title: "SaaS Template Platform",
+      title: "DDR AI Career Coach",
       description:
-        "A scalable SaaS boilerplate built with Next.js 15, integrating authentication, payments, and database.",
+        "AI-powered SaaS career acceleration platform delivering automated resume parsing, mock technical interviews, and roadmaps.",
       longDescription:
-        "Developed a scalable SaaS template using Next.js 15 with TypeScript, implementing Google OAuth & credentials-based login using NextAuth.js, Stripe payment integration with webhook handling, and PostgreSQL (via Drizzle ORM). Designed responsive UI with Tailwind CSS & shadcn/ui, configured Resend for transactional emails, and ensured secure validation using Zod.",
+        "Built a scalable Next.js career acceleration dashboard using Prisma ORM to save candidate states to a Neon PostgreSQL instance. Integrates Gemini Pro LLM with structured parser constraints to audit resume uploads against standard criteria and return line-by-line feedback in under 3 seconds.",
       technologies: [
-        "Next.js 15",
+        "Next.js",
         "TypeScript",
-        "NextAuth.js",
-        "Stripe",
-        "PostgreSQL",
-        "Drizzle ORM",
-        "Tailwind CSS",
-        "shadcn/ui",
+        "Gemini API",
+        "Prisma ORM",
+        "Neon PostgreSQL",
+        "TailwindCSS"
       ],
-      duration: "Dec 2024 – Jan 2025",
+      duration: "June 2025 – Present",
       category: "Full Stack",
       featured: true,
-      liveUrl: "#",
-      githubUrl: "https://github.com/DEEPAK-317/saas-template",
+      liveUrl: "https://ddrai-career-coach.vercel.app/",
+      githubUrl: "https://github.com/DEEPAK-317/DDRAI-CAREER-COACH",
     },
-
-    // 🔹 2. HR Automation Platform
     {
-      title: "HR Automation Platform",
+      title: "RAG Document Q&A System",
       description:
-        "Automated HR workflows for managing 13,000+ employee records with AI-based data processing.",
+        "Retrieval-Augmented Generation (RAG) system for conversational question answering over high-volume PDF logs.",
       longDescription:
-        "Built a secure HR automation platform capable of managing 13,000+ employee records with optimized SQL queries and Flask API integration. Added AI modules for auto-resume parsing and analytics dashboards. Improved efficiency by 60% in internal HR operations and introduced access-based authentication layers for scalability.",
-      technologies: ["Flask", "React", "MySQL", "Docker", "JWT", "Pandas", "AI/ML"],
-      duration: "Jun 2024 – Aug 2024",
+        "Engineered document intelligence workflows in FastAPI using Python and LangChain. Configured semantic chunk splitters, Mistral dense embeddings, and Pinecone Vector database lookups with MMR retrieval strategies to mitigate hallucination rates and verify citations.",
+      technologies: [
+        "Python",
+        "FastAPI",
+        "LangChain",
+        "Pinecone Vector DB",
+        "Mistral API",
+        "HTML5",
+        "CSS3"
+      ],
+      duration: "May 2025 – July 2025",
+      category: "AI/ML",
+      featured: true,
+      liveUrl: "https://rag-document-qna-system.vercel.app/",
+      githubUrl: "https://github.com/DEEPAK-317/RAG_Document_QnA-_System",
+    },
+    {
+      title: "MERN M-Commerce Platform",
+      description:
+        "Scale-optimized M-Commerce store with PWA support, handling high concurrent loads.",
+      longDescription:
+        "Developed during NIT Trichy internship. Features Redis caching structures, index tuning, and database sharding configurations. Deployed on AWS and Vercel to support 10,000+ concurrent users with sub-200ms API response latencies.",
+      technologies: [
+        "MERN Stack",
+        "Redis",
+        "AWS",
+        "Vercel",
+        "GitHub Actions",
+        "PWA"
+      ],
+      duration: "July 2024 – August 2024",
       category: "Full Stack",
       featured: true,
-      liveUrl: "#",
-      githubUrl: "https://github.com/DEEPAK-317/hr-automation",
+      liveUrl: "https://eshop-firebase.vercel.app/",
+      githubUrl: "https://github.com/DEEPAK-317/Intership_nextjs-saas-typescript",
     },
-
-    // 🔹 3. Credit Card Fraud Detection
     {
-      title: "Credit Card Fraud Detection",
+      title: "Explainable Fraud Detection System",
       description:
-        "Machine learning model to detect fraudulent transactions in an imbalanced dataset using PyCaret.",
+        "An interpretability-focused anomaly classifier using Isolation Forest and Random Forest pipelines.",
       longDescription:
-        "Developed a machine learning model to detect fraudulent transactions in a dataset containing 284K+ records (492 frauds). Used PyCaret for automated model selection, applied SMOTE for balancing, and deployed ensemble models with high precision-recall tradeoff. Evaluated performance using F1-score and AUC metrics.",
-      technologies: ["Python", "PyCaret", "SMOTE", "Scikit-learn", "Matplotlib", "Pandas"],
-      duration: "Mar 2024 – Apr 2024",
+        "Engineered predictive transaction classifiers using Python and Scikit-Learn. Integrates SHAP local explanation maps to generate and display decision pathways inside a Streamlit web portal, balancing high anomaly recall targets.",
+      technologies: [
+        "Python",
+        "Streamlit",
+        "Scikit-Learn",
+        "SHAP",
+        "Pandas",
+        "Matplotlib"
+      ],
+      duration: "March 2025 – April 2025",
       category: "AI/ML",
       featured: false,
-      liveUrl: "#",
-      githubUrl: "https://github.com/DEEPAK-317/credit-card-fraud-detection",
+      liveUrl: "https://github.com/DEEPAK-317/explainable-fraud-detection",
+      githubUrl: "https://github.com/DEEPAK-317/explainable-fraud-detection",
     },
-
-    // 🔹 4. Digital Payment Survey (Academic Research)
     {
-      title: "Digital Payment Survey: Urban vs Rural",
+      title: "MailMate AI Email Companion",
       description:
-        "A research-based data analysis comparing digital payment adoption between urban and rural India.",
+        "Tone-customizable generative assistant generating context-aware email replies.",
       longDescription:
-        "Conducted a comprehensive survey-based research analyzing digital payment trends in urban and rural regions of India. Designed structured questionnaires, collected 500+ responses, and visualized trends using Excel and Python’s Matplotlib. Proposed data-driven insights to improve digital literacy and adoption rates.",
-      technologies: ["Python", "Excel", "Matplotlib", "Survey Research"],
-      duration: "Oct 2025",
-      category: "Research",
-      featured: false,
-      liveUrl: "#",
-      githubUrl: "https://github.com/DEEPAK-317/digital-payment-survey",
-    },
-
-    // 🔹 5. WhatsApp AI Assistant
-    {
-      title: "WhatsApp AI Assistant",
-      description:
-        "AI-powered WhatsApp chatbot for automated lead handling, booking, and customer support.",
-      longDescription:
-        "Created an intelligent WhatsApp assistant using Meta’s API, integrated with OpenAI for NLP-based automation. The system automatically handled lead responses, appointment bookings, and FAQs. Connected with CRM for lead generation, improving operational efficiency by 80%.",
-      technologies: ["Python", "Flask", "OpenAI API", "WhatsApp API", "Webhooks"],
-      duration: "Jul 2025 – Present",
+        "Created a prompt-engineered helper in Python and Streamlit. Routes tone configurations to Google Gemini API text generation endpoints, managing token payloads and rate bounds.",
+      technologies: [
+        "Python",
+        "Streamlit",
+        "Gemini API",
+        "Prompt Engineering"
+      ],
+      duration: "May 2025",
       category: "AI/ML",
       featured: false,
-      liveUrl: "#",
-      githubUrl: "https://github.com/DEEPAK-317",
+      liveUrl: "https://github.com/DEEPAK-317/MailMate",
+      githubUrl: "https://github.com/DEEPAK-317/MailMate",
     },
-
-    // 🔹 6. ClassPilot
     {
-      title: "ClassPilot",
+      title: "NITT Student Track System",
       description:
-        "An education platform with curated content, real-time search, and instructor dashboards.",
+        "Academic planners and scheduling dashboards with role-based JWT validation.",
       longDescription:
-        "Designed a modular education platform using Flask, React, PostgreSQL, Docker, and JWT. Integrated Meilisearch for instant search, instructor dashboards, and dynamic content modules. Architected for scalability with REST APIs and containerized deployment using Docker Compose.",
-      technologies: ["Python", "Flask", "React", "PostgreSQL", "Docker", "JWT", "Meilisearch"],
-      duration: "Jun 2025 – Present",
+        "Built a responsive React/Express organizer with Express routes, JWT secure validation tokens, Mongoose database models, and interactive schedules.",
+      technologies: [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Mongoose",
+        "JavaScript"
+      ],
+      duration: "January 2025 – February 2025",
       category: "Full Stack",
-      featured: true,
-      liveUrl: "#",
-      githubUrl: "https://github.com/DEEPAK-317",
+      featured: false,
+      liveUrl: "https://github.com/DEEPAK-317/Nitt-Student-Track",
+      githubUrl: "https://github.com/DEEPAK-317/Nitt-Student-Track",
     },
-
-    // 🔹 7. ReactForge
     {
-      title: "ReactForge",
+      title: "Split Expense sharing Mobile App",
       description:
-        "A modular multi-site React builder enabling users to create and deploy isolated apps.",
+        "Bill division ledger tracking engine for cross-platform mobile environments.",
       longDescription:
-        "Built a modular multi-site React builder enabling users to create, customize, and deploy isolated apps from a shared codebase. Integrated drag-and-drop features (React DnD), 3D rendering (Three.js), and auto-static builds with Vite for efficient deployment. Designed with reusable components and environment-driven configurations.",
-      technologies: ["React", "Flask", "Vite", "React DnD", "Three.js", "NPM Library"],
-      duration: "Jan 2025 – Mar 2025",
+        "Engineered mobile application layouts in React Native communicating with Express API routes backing MongoDB. Implemented offline synchronization reconciliations.",
+      technologies: [
+        "TypeScript",
+        "React Native",
+        "Node.js",
+        "Express",
+        "MongoDB"
+      ],
+      duration: "February 2025",
       category: "Platform",
-      featured: true,
-      liveUrl: "#",
-      githubUrl: "https://github.com/DEEPAK-317",
+      featured: false,
+      liveUrl: "https://github.com/DEEPAK-317/Split-App",
+      githubUrl: "https://github.com/DEEPAK-317/Split-App",
     },
   ];
 
