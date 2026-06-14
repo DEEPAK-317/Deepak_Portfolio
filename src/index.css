@@ -96,3 +96,29 @@ body {
     cursor: none !important;
   }
 }
+
+/* Profile Picture Specifications */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.profile-float {
+  animation: float 3s infinite ease-in-out;
+}
+
+.profile-image-container {
+  padding: 3px;
+  background: linear-gradient(135deg, #00D4FF 0%, #7B2FBE 100%);
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.profile-image-container:hover {
+  transform: scale(1.05);
+}
+
