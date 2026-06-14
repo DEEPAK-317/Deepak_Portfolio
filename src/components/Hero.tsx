@@ -8,17 +8,16 @@ const Hero = () => {
           {/* Left side - Profile Image - FULL SIZE */}
           <div className="flex justify-center md:justify-start order-2 md:order-1">
             <div className="relative">
-              <div className="w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden border-4 border-purple-500 shadow-2xl shadow-purple-500/50 hover:shadow-purple-500/80 transition-all duration-300">
+              <div className="w-64 h-80 md:w-72 md:h-90 rounded-3xl overflow-hidden border-2 border-purple-500/80 shadow-xl shadow-purple-500/30 hover:shadow-purple-500/60 transition-all duration-300">
                 <img 
-                  src="https://github.com/DEEPAK-317.png" 
+                  src="/profile2.jpg" 
                   alt="Deepak Kumar Profile" 
-                  className="w-full h-full object-contain bg-zinc-950 scale-100"
+                  className="w-full h-full object-cover scale-105 transition-transform duration-500 hover:scale-110"
                   style={{
-                    objectFit: 'contain',
-                    objectPosition: 'center center'
+                    objectPosition: 'center 10%'
                   }}
                   onError={(e) => {
-                    e.currentTarget.src = 'https://avatars.githubusercontent.com/u/161968065?v=4';
+                    e.currentTarget.src = 'https://github.com/DEEPAK-317.png';
                   }}
                 />
               </div>
