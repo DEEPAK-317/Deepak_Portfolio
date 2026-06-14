@@ -18,25 +18,15 @@ const About = () => {
           <div className="space-y-6">
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I'm <strong>Deepak Kumar</strong>, a passionate Computer Science student at{" "}
-                <strong>NIT Trichy</strong> with a strong foundation in full-stack
-                development and artificial intelligence. My journey began with a
-                curiosity about how software works and evolved into deep expertise
-                in modern web technologies and AI/ML.
+                I'm <strong>Deepak Kumar</strong>, a Software Development Engineer (SDE) at <strong>DailyKaam</strong> and a Computer Science & Engineering student at <strong>NIT Trichy</strong>. I specialize in designing and shipping scalable full-stack web architectures, database optimization, and scalable Generative AI integrations.
               </p>
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                Through academic and internship experiences, I’ve worked on diverse
-                projects — from HR automation platforms handling 13,000+ employee
-                records to AI-powered solutions that streamline business operations.
-                I thrive on solving complex problems and building scalable, impactful
-                products.
+                Through my SDE role at DailyKaam and various internship environments, I have engineered high-impact systems — from M-Commerce architectures handling 10,000+ concurrent users to automated Retrieval-Augmented Generation (RAG) pipelines. I focus on writing modular, test-driven code and optimizing data access layouts to ensure low network latency and high system uptime.
               </p>
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                When I’m not coding, I enjoy exploring new technologies, contributing
-                to open-source projects, and developing innovative solutions that
-                bridge the gap between technology and real-world problems.
+                I am an active contributor to open-source developer tooling (including LangChain and Streamlit) and enjoy solving complex algorithmic challenges, competing regularly to refine execution complexity under system constraints.
               </p>
             </div>
 
@@ -47,7 +37,7 @@ const About = () => {
                   3+
                 </div>
                 <div className="text-sm text-gray-600 dark:text-gray-300">
-                  Internships
+                  Professional Roles
                 </div>
               </div>
 
