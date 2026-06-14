@@ -6,6 +6,8 @@ import {
   Send,
   Github,
   Linkedin,
+  Loader2,
+  CheckCircle2,
 } from "lucide-react";
 
 const Contact = () => {
@@ -15,6 +17,8 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success">("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -27,21 +31,31 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
 
-    const subject = encodeURIComponent(formData.subject || "Portfolio Contact");
-    const body = encodeURIComponent(
-      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-    );
+    setTimeout(() => {
+      const subject = encodeURIComponent(formData.subject || "Portfolio Contact");
+      const body = encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      );
 
-    const gmailLink = `https://mail.google.com/mail/?view=cm&to=deepaknittrichy@gmail.com&su=${subject}&body=${body}`;
-    window.open(gmailLink, "_blank");
+      const gmailLink = `https://mail.google.com/mail/?view=cm&to=deepaknittrichy@gmail.com&su=${subject}&body=${body}`;
+      window.open(gmailLink, "_blank");
 
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setIsSubmitting(false);
+      setSubmitStatus("success");
+
+      setTimeout(() => {
+        setSubmitStatus("idle");
+      }, 4000);
+    }, 1500);
   };
 
   const contactInfo = [
@@ -50,6 +64,12 @@ const Contact = () => {
       title: "Email",
       value: "deepaknittrichy@gmail.com",
       link: "https://mail.google.com/mail/?view=cm&to=deepaknittrichy@gmail.com",
+    },
+    {
+      icon: <Linkedin className="text-blue-600" size={24} />,
+      title: "LinkedIn",
+      value: "linkedin.com/in/deepak-kumar-62a4b8270",
+      link: "https://www.linkedin.com/in/deepak-kumar-62a4b8270/",
     },
     {
       icon: <Phone className="text-green-600" size={24} />,
@@ -245,10 +265,31 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                disabled={isSubmitting}
+                className={`w-full flex items-center justify-center px-8 py-3 rounded-lg shadow-lg transition-all duration-300 transform font-semibold text-white ${
+                  submitStatus === "success"
+                    ? "bg-green-600 hover:bg-green-700 hover:scale-105"
+                    : isSubmitting
+                    ? "bg-purple-700 cursor-not-allowed opacity-90"
+                    : "bg-primary-600 hover:bg-primary-700 hover:scale-105"
+                }`}
               >
-                <Send size={20} className="mr-2" />
-                Send Message
+                {submitStatus === "success" ? (
+                  <>
+                    <CheckCircle2 size={20} className="mr-2 animate-bounce" />
+                    Gmail Compose Opened!
+                  </>
+                ) : isSubmitting ? (
+                  <>
+                    <Loader2 size={20} className="mr-2 animate-spin" />
+                    Opening Gmail...
+                  </>
+                ) : (
+                  <>
+                    <Send size={20} className="mr-2" />
+                    Send Message
+                  </>
+                )}
               </button>
             </form>
           </div>
